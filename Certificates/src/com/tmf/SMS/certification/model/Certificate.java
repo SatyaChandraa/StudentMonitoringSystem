@@ -1,14 +1,32 @@
 package com.tmf.SMS.certification.model;
 
 import java.sql.Date;
-
 public class Certificate {
 
 	private int certificateid,cid,sid,bid;
-	private String dispatchedOn,generatedOn;
+	private Date dispatchedOn,generatedOn;
 	public int getCertificateid() {
 		return certificateid;
 	}
+	
+//	public Certificate(int certificateid, int cid, int sid, int bid, Date dispatchedOn, Date generatedOn) {
+//		super();
+//		
+//	}
+
+//	public Certificate(int cftid, int cid2, int sid2, int bid2, Date don, Date gon) {
+//		
+//	}
+
+	public Certificate(int cftid, int cid2, int sid2, int bid2, Date don, Date gon) {
+		this.certificateid = cftid;
+		this.cid = cid2;
+		this.sid = sid2;
+		this.bid = bid2;
+		this.dispatchedOn = don;
+		this.generatedOn = gon;
+	}
+
 	public void setCertificateid(int certificateid) {
 		this.certificateid = certificateid;
 	}
@@ -30,16 +48,16 @@ public class Certificate {
 	public void setBid(int bid) {
 		this.bid = bid;
 	}
-	public String getDispatchedOn() {
+	public Date getDispatchedOn() {
 		return dispatchedOn;
 	}
-	public void setDispatchedOn(String dispatchedOn) {
+	public void setDispatchedOn(Date dispatchedOn) {
 		this.dispatchedOn = dispatchedOn;
 	}
-	public String getGeneratedOn() {
+	public Date getGeneratedOn() {
 		return generatedOn;
 	}
-	public void setGeneratedOn(String generatedOn) {
+	public void setGeneratedOn(Date generatedOn) {
 		this.generatedOn = generatedOn;
 	}
 	@Override
@@ -47,15 +65,7 @@ public class Certificate {
 		return "Certification [certificateid=" + certificateid + ", cid=" + cid + ", sid=" + sid + ", bid=" + bid
 				+ ", dispatchedOn=" + dispatchedOn + ", generatedOn=" + generatedOn + "]";
 	}
-	public Certificate(int certificateid, int cid, int sid, int bid, String dispatchedOn, String generatedOn) {
-		
-		this.certificateid = certificateid;
-		this.cid = cid;
-		this.sid = sid;
-		this.bid = bid;
-		this.dispatchedOn = dispatchedOn;
-		this.generatedOn = generatedOn;
-	}
+	
 	
 	
 	

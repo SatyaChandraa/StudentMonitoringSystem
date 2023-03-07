@@ -2,9 +2,13 @@ package com.tmf.SMS.certification.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.List;
 
 import com.tmf.SMS.certification.model.Certificate;
+import com.tmf.SMS.certification.services.Batch;
+import com.tmf.SMS.certification.services.Course;
+import com.tmf.SMS.certification.services.Student;
 
 public class CertificateDAOImpl implements CertificateDAO {
 	
@@ -22,15 +26,15 @@ public class CertificateDAOImpl implements CertificateDAO {
 			ps.setInt(2, certificate.getCid());
 			ps.setInt(3, certificate.getSid());
 			ps.setInt(4, certificate.getBid());
-			ps.setString(5,certificate.getDispatchedOn());
-			ps.setString(6, certificate.getGeneratedOn());
+			ps.setDate(5,certificate.getDispatchedOn());
+			ps.setDate(6, certificate.getGeneratedOn());
 			ps.execute();
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return result;
 	}
 
 	@Override
@@ -45,13 +49,13 @@ public class CertificateDAOImpl implements CertificateDAO {
 			while (rs.next()) {
 				
 				int cftid = rs.getInt("certificateid");
-				int cid = rs.getInt("cid");
-				int sid = rs.getInt("sid");
-				int bid = rs.getInt("bid");
-				String gon = rs.getString("genertedOn");
-				String don = rs.getString("dispatchedOn");
+				int cid2 = rs.getInt("cid");
+				int sid2 = rs.getInt("sid");
+				int bid2 = rs.getInt("bid");
+				Date gon = rs.getDate("genertedOn");
+				Date don = rs.getDate("dispatchedOn");
 				
-				Certificate certificate = new Certificate(cftid,cid,sid,bid,don,gon);
+				Certificate certificate = new Certificate(cftid,cid2,sid2,bid2,don,gon);
 				certificates.add(certificate);			}
 			
 			
@@ -80,8 +84,8 @@ public class CertificateDAOImpl implements CertificateDAO {
 				int cid = rs.getInt("cid");
 				int sid = rs.getInt("sid");
 				int bid = rs.getInt("bid");
-				String gon = rs.getString("genertedOn");
-				String don = rs.getString("dispatchedOn");
+				Date gon = rs.getDate("genertedOn");
+				Date don = rs.getDate("dispatchedOn");
 				
 				Certificate certificate = new Certificate(cftid,cid,sid,bid,don,gon);
 				certificates.add(certificate);
@@ -99,7 +103,7 @@ public class CertificateDAOImpl implements CertificateDAO {
 		try {
 		query = "select * from certificate where courseId = ?";
 		ps = con.prepareStatement(query);
-		ps.setInt(1, course.getInt());
+		ps.setInt(1, course.getcid());
 		rs = ps.executeQuery();
 		
 		while(rs.next()) {
@@ -108,8 +112,8 @@ public class CertificateDAOImpl implements CertificateDAO {
 			int cid = rs.getInt("cid");
 			int sid = rs.getInt("sid");
 			int bid = rs.getInt("bid");
-			String gon = rs.getString("genertedOn");
-			String don = rs.getString("dispatchedOn");
+			Date gon = rs.getDate("genertedOn");
+			Date don = rs.getDate("dispatchedOn");
 			Certificate certificate = new Certificate(cftid,cid,sid,bid,don,gon);
 			certificates.add(certificate);
 		}
@@ -128,7 +132,7 @@ public class CertificateDAOImpl implements CertificateDAO {
 			
 			query = "select * from certificate where studentId = ?";
 			ps = con.prepareStatement(query);
-			ps.setInt(1, student.getInt());
+			ps.setInt(1, student.getsid());
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
@@ -137,8 +141,8 @@ public class CertificateDAOImpl implements CertificateDAO {
 				int cid = rs.getInt("cid");
 				int sid = rs.getInt("sid");
 				int bid = rs.getInt("bid");
-				String gon = rs.getString("generatedOn");
-				String don = rs.getString("dispatchedOn");
+				Date gon = rs.getDate("genertedOn");
+				Date don = rs.getDate("dispatchedOn");
 				 certificate = new Certificate(cftid,cid,sid,bid,don,gon);	
 			}
 			
@@ -161,8 +165,8 @@ public class CertificateDAOImpl implements CertificateDAO {
 			ps.setInt(6, cerificate.getCid());
 			ps.setInt(2, cerificate.getSid());
 			ps.setInt(3, cerificate.getBid());
-			ps.setString(4, cerificate.getGeneratedOn());
-			ps.setString(5, cerificate.getDispatchedOn());
+			ps.setDate(4, cerificate.getGeneratedOn());
+			ps.setDate(5, cerificate.getDispatchedOn());
 			ps.execute();
 			result = true;
 			

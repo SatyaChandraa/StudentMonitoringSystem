@@ -32,7 +32,7 @@ public class CertificateServicesImpl implements CertificateServices {
 
 	@Override
 	public Certificate displayCertificates(Student student) {
-		// TODO Auto-generated method stDisplay Productub
+		// TODO Auto-generated method stDisplay Product
 		return dao.displayCertificates(student);
 	}
 
@@ -41,4 +41,8 @@ public class CertificateServicesImpl implements CertificateServices {
 		// TODO Auto-generated method stub
 		return dao.updateCertificate(cerificate);
 	}
+
+	
+
+	
 }

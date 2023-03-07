@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConfig {
-	private Connection con;
+	private static Connection con;
 	
-	public Connection getConnection() {
-		String url="jdbc:mysql://@localhost:3306/cijd_11";
+	public static Connection getConnection() {
+		String url="jdbc:mysql://@localhost:3306/certificates";
 		String user="root",pwd="root";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -17,5 +17,8 @@ public class DBConfig {
 			e.printStackTrace();
 		}
 		return con;
+	}
+	public static void main(String[] args) {
+		getConnection();
 	}
 }

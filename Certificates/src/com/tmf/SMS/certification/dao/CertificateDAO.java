@@ -6,11 +6,14 @@ import java.util.List;
 
 import com.tmf.SMS.certification.config.DBConfig;
 import com.tmf.SMS.certification.model.Certificate;
+import com.tmf.SMS.certification.services.Batch;
+import com.tmf.SMS.certification.services.Course;
+import com.tmf.SMS.certification.services.Student;
 
 
 
 public interface CertificateDAO {
-
+ 
 	List<Certificate> certificates = new ArrayList<Certificate>();
 	DBConfig config = new DBConfig();
 	Connection con = config.getConnection();
@@ -19,6 +22,6 @@ public interface CertificateDAO {
 	 List<Certificate> displayCertificates();
 	 List<Certificate> displayCertificates(Batch batch);
 	 List<Certificate> displayCertificates(Course course);
-	 Certificate displayCertificates(Student student);
+	 Certificate displayCertificates(Student  student);
 	 boolean updateCertificate(Certificate cerificate);
 }

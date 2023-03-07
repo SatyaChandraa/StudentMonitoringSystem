@@ -17,6 +17,5 @@ public interface CertificateServices {
 	 List<Certificate> displayCertificates(Course course);
 	 Certificate displayCertificates(Student student);
 	 boolean updateCertificate(Certificate cerificate);
-	 void menu();
-
+	
 }
